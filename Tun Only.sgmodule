@@ -1,0 +1,9 @@
+#!name=Tun Only兼容app
+#!desc=Enable tun only and force 80 port http proxy
+
+[Rule]
+IP-CIDR,203.107.1.1/24,REJECT,no-resolve
+
+[General]
+compatibility-mode = 3
+force-http-engine-hosts = %APPEND% *

@@ -1,0 +1,5 @@
+#!name=DH-DoH-RESERVE
+#!desc=Private DNS.h3://43.138.226.127/dns-query
+
+[General]
+doh-server = https://9341ce78.d.adguard-dns.com/dns-query

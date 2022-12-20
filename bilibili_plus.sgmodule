@@ -1,0 +1,32 @@
+#!name=Mixed Use
+#!desc=Script for personal use
+#!system=ios
+[Header Rewrite]
+
+[Rule]
+# > 京东  去启动广告
+URL-REGEX,^https?:\/\/api\.m\.jd\.com\/client\.action\?functionId=start$,REJECT-TINYGIF
+[Panel]
+
+[MITM]
+hostname = %APPEND%   www.google.*,api.m.jd.com,mp.weixin.qq.com
+[Script]
+# > 微信
+http-request ^https://mp\.weixin\.qq\.com/mp/getappmsgad script-path=https://raw.githubusercontent.com/scomper/Surge/master/Scripts/WeChat.js
+
+# > 网易蜗牛读书VIP (By yxiaocai and JO2EY)
+#wnyd.js = requires-body=1,script-path=https://raw.githubusercontent.com/NobyDa/Script/master/QuantumultX/File/wnyd.js,type=http-response,pattern=^https?:\/\/p\.du\.163\.com\/gain\/readtime\/info\.json
+#p.du.163.com
+
+# Google自动翻页
+google自动翻页 = type=http-response,pattern=^https?:\/\/www\.google\..*\/search,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/langkhach270389/Surge-LK/main/scripts/langkhach/endlessgoogle.js,script-update-interval=0
+
+# 微信底部广告
+http-response ^https?:\/\/mp\.weixin\.qq\.com\/mp\/getappmsgad requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/NobyDa/Script/master/QuantumultX/File/Wechat.js
+
+[URL Rewrite]
+^https?:\/\/p\.du\.163\.com\/ad\/ - reject
+# Redirect Google Search Service
+^(http|https):\/\/(www.)?(g|google)\.cn https://www.google.com 302
+# Redirect Google Maps Service
+^(http|https):\/\/(ditu|maps).google\.cn https://maps.google.com 302

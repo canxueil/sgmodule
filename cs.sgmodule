@@ -1,0 +1,6 @@
+
+[Map Local]
+^https:\/\/firebaseremoteconfig\.googleapis\.com\/v1\/projects data="5044D94D.json"
+
+[MITM]
+hostname = %APPEND% firebaseremoteconfig.googleapis.com
